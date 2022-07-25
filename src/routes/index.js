@@ -2,12 +2,12 @@ const express = require("express");
 const routes = express.Router();
 const pacienteController = require("../controller/pacienteController");
 const psicologosController = require("../controller/psicologosController.js");
-const { validateEmail } = require("../middlewares/validateEmail");
 
 const pacienteValidation = require("../validations/pacientes/criarPaciente");
 const psicologosValidation = require("../validations/psicologos/criarPsicologo");
 const validateId = require("../middlewares/validateIdPaciente");
 const validateIdPsicologos = require("../middlewares/validateIdPsicologos");
+const { validateEmail } = require("../middlewares/validateEmail");
 
 routes.get("/pacientes/", pacienteController.listarPacientes);
 routes.get("/pacientes/:id", validateId, pacienteController.listarPacienteById);
