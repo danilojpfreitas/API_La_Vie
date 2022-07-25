@@ -10,6 +10,9 @@ module.exports = (error, req, res, next) => {
         return res.status(error.status).json(error);
     };
 
+    if (error instanceof ValidationResult) {
+        return res.status(error.status).json(error);
+    }
     return res.status(500).json(error);
 
 };

@@ -2,10 +2,11 @@ const express = require("express");
 const routes = express.Router();
 const pacienteController = require("../controller/pacienteController");
 const psicologosController = require("../controller/psicologosController.js");
+const { validateEmail } = require("../middlewares/validateEmail");
 
-const pacienteValidation = require("../validations/pacientes/criarUsuario");
-const psicologosValidation = require("../validations/pacientes/criarPsicologo");
-const validateId = require("../middlewares/validateId");
+const pacienteValidation = require("../validations/pacientes/criarPaciente");
+const psicologosValidation = require("../validations/psicologos/criarPsicologo");
+const validateId = require("../middlewares/validateIdPaciente");
 const validateIdPsicologos = require("../middlewares/validateIdPsicologos");
 
 routes.get("/pacientes/", pacienteController.listarPacientes);
@@ -16,7 +17,7 @@ routes.delete("/pacientes/:id", validateId, pacienteController.deletarPaciente);
 
 routes.get("/psicologos/", psicologosController.listarPsicologos);
 routes.get("/psicologos/:id", validateIdPsicologos, psicologosController.listarPsicologosById);
-routes.post("/psicologos/", psicologosValidation, psicologosController.cadastrarPsicologos);
+routes.post("/psicologos/", psicologosValidation, validateEmail, psicologosController.cadastrarPsicologos);
 routes.put("/psicologos/:id", validateIdPsicologos, psicologosValidation, psicologosController.editarPsicologos);
 routes.delete("/psicologos/:id", validateIdPsicologos, psicologosController.deletarPsicologos);
 

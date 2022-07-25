@@ -20,8 +20,6 @@ const Paciente = db.define(
         idade: {
             type: DataTypes.DATE
         },
-        createdAt: { type: DataTypes.DATE },
-        updatedAt: { type: DataTypes.DATE },
     }, {
         tableName: "pacientes",
     });

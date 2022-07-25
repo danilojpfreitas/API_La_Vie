@@ -21,11 +21,15 @@ const psicologosController = {
     },
 
     async cadastrarPsicologos(req, res) {
-        const { nome, email, idade } = req.body;
+        try {
+            const { nome, email, idade } = req.body;
 
-        const novoPsicologos = await Psicologos.create({ nome, email, idade })
+            const novoPsicologos = await Psicologos.create({ nome, email, idade })
 
-        res.status(201).json(novoPsicologos);
+            res.status(201).json(novoPsicologos);
+        } catch (error) {
+            res.status(405).json(error)
+        }
     },
     async editarPsicologos(req, res) {
         try {
