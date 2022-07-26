@@ -23,11 +23,11 @@ const psicologosController = {
 
     async cadastrarPsicologos(req, res) {
         try {
-            const { nome, email, senha, idade } = req.body;
+            const { nome, email, senha, apresentacao } = req.body;
 
             const newSenha = bcrypt.hashSync(senha, 10);
 
-            const novoPsicologos = await Psicologos.create({ nome, email, senha: newSenha, idade })
+            const novoPsicologos = await Psicologos.create({ nome, email, senha: newSenha, apresentacao })
 
             res.status(201).json(novoPsicologos);
         } catch (error) {
@@ -44,8 +44,8 @@ const psicologosController = {
             await Psicologos.update({
                 nome,
                 email,
-                newSenha,
-                apresentacao
+                senha: newSenha,
+                apresentacao,
             }, {
                 where: {
                     id: id,
@@ -55,7 +55,7 @@ const psicologosController = {
 
             res.json(psicologosAtualizado);
         } catch (error) {
-            return res.status(404);
+            return res.status(404).json(error);
         }
     },
     async deletarPsicologos(req, res) {
