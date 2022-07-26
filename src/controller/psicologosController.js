@@ -1,5 +1,6 @@
 const { Psicologos } = require("../models");
 require("datejs");
+const bcrypt = require("bcryptjs");
 
 const psicologosController = {
     async listarPsicologos(req, res) {
@@ -22,9 +23,11 @@ const psicologosController = {
 
     async cadastrarPsicologos(req, res) {
         try {
-            const { nome, email, idade } = req.body;
+            const { nome, email, senha, idade } = req.body;
 
-            const novoPsicologos = await Psicologos.create({ nome, email, idade })
+            const newSenha = bcrypt.hashSync(senha, 10);
+
+            const novoPsicologos = await Psicologos.create({ nome, email, senha: newSenha, idade })
 
             res.status(201).json(novoPsicologos);
         } catch (error) {
