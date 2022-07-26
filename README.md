@@ -27,7 +27,8 @@ A API é composta por endpoints para manipulação de tabelas de pacientes, psic
 
 ## :page_with_curl: Documentação
 
-A documentação da API encontra-se em "docs/documentacaoAPI" ou clicando aqui [aqui.](/docs/documentacaoAPI/)
+A documentação da API encontra-se em "docs/documentacaoAPI", é necessário executar com Live Server ou "npx server" por incompatibilidade da extenção.
+Todas as informações da documentação da API podem ser vistas ao clicar em "Run in Insomnia" neste README    
 
 
 ---
