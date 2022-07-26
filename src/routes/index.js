@@ -9,8 +9,12 @@ const validateId = require("../middlewares/validateIdPaciente");
 const validateIdPsicologos = require("../middlewares/validateIdPsicologos");
 const { validateEmail } = require("../middlewares/validateEmail");
 
+const authController = require("../controller/authController");
+const authLoginValidation = require("../validations/auth/login");
+const auth = require("../middlewares/auth");
+
 routes.get("/pacientes/", pacienteController.listarPacientes);
-routes.get("/pacientes/:id", validateId, pacienteController.listarPacienteById);
+routes.get("/pacientes/:id", auth, validateId, pacienteController.listarPacienteById);
 routes.post("/pacientes/", pacienteValidation, pacienteController.cadastrarPaciente);
 routes.put("/pacientes/:id", validateId, pacienteValidation, pacienteController.editarPaciente);
 routes.delete("/pacientes/:id", validateId, pacienteController.deletarPaciente);
@@ -20,5 +24,7 @@ routes.get("/psicologos/:id", validateIdPsicologos, psicologosController.listarP
 routes.post("/psicologos/", psicologosValidation, validateEmail, psicologosController.cadastrarPsicologos);
 routes.put("/psicologos/:id", validateIdPsicologos, psicologosValidation, psicologosController.editarPsicologos);
 routes.delete("/psicologos/:id", validateIdPsicologos, psicologosController.deletarPsicologos);
+
+routes.post("/login/", authLoginValidation, authController.login);
 
 module.exports = routes;
