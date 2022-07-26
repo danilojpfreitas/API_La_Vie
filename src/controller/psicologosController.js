@@ -39,10 +39,12 @@ const psicologosController = {
             const { id } = req.params;
             const { nome, email, senha, apresentacao } = req.body;
 
+            const newSenha = bcrypt.hashSync(senha, 10);
+
             await Psicologos.update({
                 nome,
                 email,
-                senha,
+                newSenha,
                 apresentacao
             }, {
                 where: {
