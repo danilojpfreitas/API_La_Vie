@@ -4,7 +4,8 @@
   <img src="./docs/readmeFiles/logoGama.png" width="50%">
 </p>
 <p align="center">
-  <a href="https://insomnia.rest/run/?label=Hands_On03_La_Vie&uri=https%3A%2F%2Fraw.githubusercontent.com%2FReygis%2FHands_On03_La_Vie%2Freygis%2Fdocs%2FinsomniaRunButton%2FInsomnia_2022-07-26.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+  <a href="https://insomnia.rest/run/?label=La_Vie&uri=https%3A%2F%2Fraw.githubusercontent.com%2FFabriciodSTeixeira%2FHands_On03_La_Vie%2Fmain%2Fdocs%2FinsomniaRunButton%2FInsomnia_2022-07-26.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+
 </p>
 
 
@@ -27,7 +28,8 @@ A API é composta por endpoints para manipulação de tabelas de pacientes, psic
 
 ## :page_with_curl: Documentação
 
-A documentação da API encontra-se em "docs/documentacaoAPI" ou clicando aqui [aqui.](/docs/documentacaoAPI/)
+A documentação da API encontra-se em "docs/documentacaoAPI", é necessário executar com Live Server ou "npx server" por incompatibilidade da extenção.
+Todas as informações da documentação da API podem ser vistas ao clicar em "Run in Insomnia" neste README    
 
 
 ---
