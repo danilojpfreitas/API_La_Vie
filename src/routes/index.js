@@ -9,6 +9,8 @@ const validateId = require("../middlewares/validateIdPaciente");
 const validateIdPsicologos = require("../middlewares/validateIdPsicologos");
 const { validateEmail } = require("../middlewares/validateEmail");
 
+const atendimentosController = require("../controller/atendimentosController")
+
 const authController = require("../controller/authController");
 const authLoginValidation = require("../validations/auth/login");
 const auth = require("../middlewares/auth");
@@ -24,6 +26,10 @@ routes.get("/psicologos/:id", validateIdPsicologos, psicologosController.listarP
 routes.post("/psicologos/", psicologosValidation, validateEmail, psicologosController.cadastrarPsicologos);
 routes.put("/psicologos/:id", validateIdPsicologos, psicologosValidation, psicologosController.editarPsicologos);
 routes.delete("/psicologos/:id", validateIdPsicologos, psicologosController.deletarPsicologos);
+
+routes.get("/atendimentos/", atendimentosController.listarAtendimentos);
+routes.get("/atendimentos/:id", atendimentosController.listarAtendimentosById);
+routes.post("/atendimentos/", auth, atendimentosController.cadastrarAtendimentos);
 
 routes.post("/login/", authLoginValidation, authController.login);
 
