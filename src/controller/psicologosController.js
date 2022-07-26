@@ -1,4 +1,4 @@
-const { Psicologos } = require("../models");
+const { Psicologos, Atendimentos } = require("../models");
 require("datejs");
 const bcrypt = require("bcryptjs");
 
@@ -62,13 +62,23 @@ const psicologosController = {
         try {
             const { id } = req.params;
 
-            await Psicologos.destroy({
-                where: {
-                    id: id,
-                }
-            })
+            const delPsicologo = await Psicologos.findOne({ where: { id } });
+            const verificaFK = await Atendimentos.findOne({ where: { psicologos_id: id } });
 
-            res.status(204).json({});
+            if (verificaFK.psicologos_id == id) {
+                return res.status(404).json("O Psicologo já possui um atendimento, portando não poderá ser excluído.");
+            };
+            if (!delPsicologo) {
+                return res.status(404).json("Id não encontrado.");
+            } else {
+                await Psicologos.destroy({
+                    where: {
+                        id: id,
+                    }
+                })
+
+                res.status(204).json({});
+            }
 
         } catch (error) {
             return res.status(400);
