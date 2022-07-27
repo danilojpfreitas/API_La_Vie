@@ -16,6 +16,13 @@ No projeto Hands-On-03, foi proposto a criação de uma API para a instituição
 A API é composta por endpoints para manipulação de tabelas de pacientes, psicologos e atendimentos no banco de dados .
 
 ---
+## Como usar a API:
+
+  - Necessário auterar credenciais em database/index.js
+  - Criar banco de dados sem tabelas (as tabelas serão criadas automaticamente)
+  - Script : npm run devStart
+  
+---
 ## :memo: Funcionalidades criadas: 
 
 1. Busca por pacientes, psicologos e atendimentos (totais e individuais);

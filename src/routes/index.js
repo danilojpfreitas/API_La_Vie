@@ -15,8 +15,10 @@ const authController = require("../controller/authController");
 const authLoginValidation = require("../validations/auth/login");
 const auth = require("../middlewares/auth");
 
+const dashboard = require("../controller/dashboard");
+
 routes.get("/pacientes/", pacienteController.listarPacientes);
-routes.get("/pacientes/:id", auth, validateId, pacienteController.listarPacienteById);
+routes.get("/pacientes/:id", validateId, pacienteController.listarPacienteById);
 routes.post("/pacientes/", pacienteValidation, pacienteController.cadastrarPaciente);
 routes.put("/pacientes/:id", validateId, pacienteValidation, pacienteController.editarPaciente);
 routes.delete("/pacientes/:id", validateId, pacienteController.deletarPaciente);
@@ -32,5 +34,10 @@ routes.get("/atendimentos/:id", atendimentosController.listarAtendimentosById);
 routes.post("/atendimentos/", auth, atendimentosController.cadastrarAtendimentos);
 
 routes.post("/login/", authLoginValidation, authController.login);
+
+routes.get("/dashboard/pacientes",dashboard.numeroPacientes);
+routes.get("/dashboard/psicologos",dashboard.numeroPsicologos);
+routes.get("/dashboard/atendimentos",dashboard.numeroAtendimentos);
+routes.get("/dashboard/media",dashboard.media);
 
 module.exports = routes;
