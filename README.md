@@ -17,8 +17,8 @@ A API é composta por endpoints para manipulação de tabelas de pacientes, psic
 
 ---
 ## Como usar a API:
-
-  - Necessário auterar credenciais em database/index.js
+  - após clonar o repositório, executar o comando "npm install" ou "yarn install"
+  - Necessário alterar credenciais em database/index.js
   - Criar banco de dados sem tabelas (as tabelas serão criadas automaticamente)
   - Script : npm run devStart
   
