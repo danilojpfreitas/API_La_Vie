@@ -4,9 +4,8 @@ const {Paciente,Psicologos,Atendimentos} = require ("../models");
 const dashboard = {
 
     async numeroPacientes (req,res){
-        const numeropacientes = await Paciente.findAndCountAll();
+        const {numeropacientes} = await Paciente.findAndCountAll();
         return res.json(`O numero total de pacientes cadastrados no banco é de : ${numeropacientes.count}`);
-       
     },
     async numeroPsicologos (req,res){
         const numeroPsicologos = await Psicologos.findAndCountAll();
