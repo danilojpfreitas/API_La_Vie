@@ -16,6 +16,8 @@ const authController = require("../controller/authController");
 const authLoginValidation = require("../validations/auth/login");
 const auth = require("../middlewares/auth");
 
+const dashboard = require("../controller/dashboard");
+
 routes.get("/pacientes/", pacienteController.listarPacientes);
 routes.get("/pacientes/:id", validateIdPacientes, pacienteController.listarPacienteById);
 routes.post("/pacientes/", pacienteValidation, pacienteController.cadastrarPaciente);
@@ -33,5 +35,10 @@ routes.get("/atendimentos/:id", validateIdAtendimentos, atendimentosController.l
 routes.post("/atendimentos/", auth, atendimentosController.cadastrarAtendimentos);
 
 routes.post("/login/", authLoginValidation, authController.login);
+
+routes.get("/dashboard/pacientes",dashboard.numeroPacientes);
+routes.get("/dashboard/psicologos",dashboard.numeroPsicologos);
+routes.get("/dashboard/atendimentos",dashboard.numeroAtendimentos);
+routes.get("/dashboard/media",dashboard.media);
 
 module.exports = routes;

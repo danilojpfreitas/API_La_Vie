@@ -1,5 +1,5 @@
-const { DataTypes } = require("sequelize");
 const db = require("../database");
+const { DataTypes } = require("sequelize");
 
 
 

@@ -1,6 +1,4 @@
 const { Atendimentos } = require("../models");
-require("datejs");
-const bcrypt = require("bcryptjs");
 
 const atendimentosController = {
     async listarAtendimentos(req, res) {
