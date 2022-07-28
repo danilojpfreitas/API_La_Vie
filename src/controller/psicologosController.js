@@ -55,7 +55,7 @@ const psicologosController = {
 
             res.json(psicologosAtualizado);
         } catch (error) {
-            return res.status(404).json(error);
+            return res.status(404);
         }
     },
     async deletarPsicologos(req, res) {
