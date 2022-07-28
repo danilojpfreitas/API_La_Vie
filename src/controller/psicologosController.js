@@ -55,7 +55,7 @@ const psicologosController = {
 
             res.json(psicologosAtualizado);
         } catch (error) {
-            return res.status(404).json(error);
+            return res.status(404);
         }
     },
     async deletarPsicologos(req, res) {
@@ -65,7 +65,7 @@ const psicologosController = {
             const delPsicologo = await Psicologos.findOne({ where: { id } });
             const verificaFK = await Atendimentos.findOne({ where: { psicologos_id: id } });
 
-            if (verificaFK.psicologos_id == id) {
+            if (verificaFK?.psicologos_id == id) {
                 return res.status(404).json("O Psicologo já possui um atendimento, portando não poderá ser excluído.");
             };
             if (!delPsicologo) {
