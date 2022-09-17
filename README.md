@@ -1,4 +1,4 @@
-# Hands_On03_La_Vie
+# API_La_Vie
 
 <p align="center">
   <img src="./docs/readmeFiles/logoGama.png" width="50%">
